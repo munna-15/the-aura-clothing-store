@@ -11,7 +11,7 @@ import ProductInfo from "./Info/ProductInfo";
 import ProductActions from "./Sections/ProductActions";
 import ProductFeatures from "./Sections/ProductFeatures";
 import ProductAccordion from "./Info/ProductAccordion";
-import RelatedProducts from "./Releted/RelatedProducts";
+import RelatedProducts from "./Related/RelatedProducts"
 
 
 
