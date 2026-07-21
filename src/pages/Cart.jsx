@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import { ProductContext } from "../context/ProductContextProvider";
 
-import CartItem from "../components/cart/CartItem";
-import CartSummary from "../components/cart/CartSummary";
+import CartItem from "../components/Cart/CartItem";
+import CartSummary from "../components/Cart/CartSummary";
 
 
 const Cart = () => {
