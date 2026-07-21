@@ -16,20 +16,11 @@ const ProductInfo = ({
 
     <motion.div
 
-      initial={{
-        opacity: 0,
-        y: 15,
-      }}
+      initial={{ opacity:0, y:10 }}
 
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
+      animate={{ opacity:1, y:0 }}
 
-      transition={{
-        duration: 0.4,
-      }}
-
+      transition={{ duration:.25 }}
 
       className="space-y-5"
 
@@ -37,11 +28,7 @@ const ProductInfo = ({
 
 
 
-
-
-
       {/* Category */}
-
 
       <p className="text-[10px] uppercase tracking-[0.35em] text-neutral-400">
         {product.category}
@@ -50,28 +37,14 @@ const ProductInfo = ({
 
 
 
-
-
-
-
       {/* Title + Rating */}
-
 
       <div>
 
 
-        <h1 className="
-          font-heading
-          text-2xl
-          font-light
-          leading-tight
-          text-neutral-900
-          sm:text-3xl
-          lg:text-4xl
-        ">
+        <h1 className="font-heading text-xl font-light leading-tight text-neutral-900 sm:text-3xl lg:text-4xl">
           {product.name}
         </h1>
-
 
 
 
@@ -83,13 +56,19 @@ const ProductInfo = ({
             {[...Array(5)].map((_, index) => (
 
               <Star
+
                 key={index}
+
                 size={14}
+
                 fill="black"
+
                 strokeWidth={1.5}
+
               />
 
             ))}
+
 
           </div>
 
@@ -109,38 +88,18 @@ const ProductInfo = ({
 
 
 
-
-
-
       {/* Price */}
 
 
-      <div className="
-        flex
-        items-center
-        justify-between
-        rounded-2xl
-        bg-black
-        px-5
-        py-4
-      ">
+      <div className="flex items-center justify-between rounded-2xl bg-black px-4 py-3.5 sm:px-5 sm:py-4">
 
 
-        <span className="
-          text-[10px]
-          uppercase
-          tracking-[0.3em]
-          text-neutral-400
-        ">
+        <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">
           Price
         </span>
 
 
-        <span className="
-          text-2xl
-          font-light
-          text-white
-        ">
+        <span className="text-xl font-light text-white sm:text-2xl">
           ৳ {product.price.toLocaleString()}
         </span>
 
@@ -151,18 +110,10 @@ const ProductInfo = ({
 
 
 
-
-
-
       {/* Description */}
 
 
-      <p className="
-        line-clamp-3
-        text-sm
-        leading-6
-        text-neutral-500
-      ">
+      <p className="line-clamp-3 text-sm leading-6 text-neutral-500">
         {product.description}
       </p>
 
@@ -170,124 +121,70 @@ const ProductInfo = ({
 
 
 
+      {/* Color */}
+
+
+      {product.colors?.length > 0 && (
+
+        <div className="space-y-3">
+
+
+          <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">
+            Color
+          </p>
 
 
 
-      {/* Color Selection */}
+          <div className="flex flex-wrap gap-2">
 
 
-      <div className="space-y-3">
+            {product.colors.map((color) => (
+
+              <button
+
+                key={color}
+
+                type="button"
+
+                onClick={() => setSelectedColor(color)}
+
+                className={`
+                  flex items-center gap-2 rounded-full px-3 py-2 text-xs transition sm:px-4
+                  ${
+                    selectedColor === color
+                      ? "bg-black text-white"
+                      : "border border-neutral-200 hover:border-black"
+                  }
+                `}
+
+              >
 
 
-        <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">
-          Color
-        </p>
+                <span
+
+                  className="h-3 w-3 rounded-full border border-neutral-300"
+
+                  style={{
+                    backgroundColor:color.toLowerCase(),
+                  }}
+
+                />
 
 
-
-        <div className="flex flex-wrap gap-2">
-
-
-          {product.colors?.map((color) => (
-
-            <button
-
-              key={color}
-
-              type="button"
-
-              onClick={() => setSelectedColor(color)}
-
-              className={`
-                flex items-center gap-2 rounded-full px-4 py-2 text-xs transition
-                ${
-                  selectedColor === color
-                    ? "bg-black text-white"
-                    : "border border-neutral-200 hover:border-black"
-                }
-              `}
-
-            >
+                {color}
 
 
-              <span
-                className="h-3 w-3 rounded-full border border-neutral-300"
-                style={{
-                  backgroundColor: color.toLowerCase(),
-                }}
-              />
+              </button>
+
+            ))}
 
 
-              {color}
-
-
-            </button>
-
-
-          ))}
-
-
-        </div>
-
-
-      </div>
-
-
-
-
-
-
-
-
-      {/* Size Selection */}
-
-
-      <div className="space-y-3">
-
-
-        <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">
-          Size
-        </p>
-
-
-
-        <div className="flex gap-2">
-
-
-          {product.sizes?.map((size) => (
-
-            <button
-
-              key={size}
-
-              type="button"
-
-              onClick={() => setSelectedSize(size)}
-
-              className={`
-                flex h-10 w-10 items-center justify-center rounded-full text-xs transition
-                ${
-                  selectedSize === size
-                    ? "bg-black text-white"
-                    : "border border-neutral-200 hover:border-black"
-                }
-              `}
-
-            >
-
-              {size}
-
-            </button>
-
-
-          ))}
+          </div>
 
 
         </div>
 
-
-      </div>
-
+      )}
 
 
 
@@ -295,34 +192,81 @@ const ProductInfo = ({
 
 
 
-      {/* Stock Status */}
+      {/* Size */}
+
+
+      {product.sizes?.length > 0 && (
+
+        <div className="space-y-3">
+
+
+          <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">
+            Size
+          </p>
+
+
+
+          <div className="flex flex-wrap gap-2">
+
+
+            {product.sizes.map((size) => (
+
+              <button
+
+                key={size}
+
+                type="button"
+
+                onClick={() => setSelectedSize(size)}
+
+                className={`
+                  flex h-10 w-10 items-center justify-center rounded-full text-xs transition
+                  ${
+                    selectedSize === size
+                      ? "bg-black text-white"
+                      : "border border-neutral-200 hover:border-black"
+                  }
+                `}
+
+              >
+
+                {size}
+
+              </button>
+
+            ))}
+
+
+          </div>
+
+
+        </div>
+
+      )}
+
+
+
+
+
+
+
+      {/* Stock */}
 
 
       <div className="flex items-center gap-2 text-xs">
 
 
-        <span
-          className={`
-            h-2 w-2 rounded-full
-            ${currentStock > 0 ? "bg-green-500" : "bg-red-500"}
-          `}
-        />
+        <span className={`h-2 w-2 rounded-full ${currentStock > 0 ? "bg-green-500" : "bg-red-500"}`} />
 
 
         <span className="text-neutral-500">
 
-          {
-            currentStock > 0
-              ? `${currentStock} pieces available`
-              : "Out of stock"
-          }
+          {currentStock > 0 ? `${currentStock} pieces available` : "Out of stock"}
 
         </span>
 
 
       </div>
-
-
 
 
 

@@ -21,8 +21,8 @@ return (
 <motion.div
 initial={{opacity:0,y:20}}
 animate={{opacity:1,y:0}}
-transition={{duration:.35}}
-className="shrink-0 border-t border-neutral-200 bg-white px-7 pt-5 pb-[calc(env(safe-area-inset-bottom)+20px)]"
+transition={{duration:.25}}
+className="max-h-[45vh] shrink-0 overflow-y-auto border-t border-neutral-200 bg-white px-7 pt-5 pb-[calc(env(safe-area-inset-bottom)+20px)]"
 >
 
 

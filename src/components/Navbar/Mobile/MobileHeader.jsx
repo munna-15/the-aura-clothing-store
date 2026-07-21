@@ -16,7 +16,7 @@ const MobileHeader = ({ onClose, user }) => {
       <motion.div
         initial={{ opacity:0, y:-15 }}
         animate={{ opacity:1, y:0 }}
-        transition={{ duration:.4 }}
+        transition={{ duration:.25 }}
         className="flex items-start justify-between"
       >
 

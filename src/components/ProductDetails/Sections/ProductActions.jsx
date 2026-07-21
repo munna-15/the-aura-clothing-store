@@ -14,18 +14,12 @@ const ProductActions = ({
 }) => {
 
 
-
   const increaseQuantity = () => {
 
-
     if (quantity >= currentStock) {
-
       toast.error("Maximum stock reached");
-
       return;
-
     }
-
 
     setQuantity((prev) => prev + 1);
 
@@ -33,24 +27,13 @@ const ProductActions = ({
 
 
 
-
-
-
   const decreaseQuantity = () => {
 
-
     if (quantity > 1) {
-
       setQuantity((prev) => prev - 1);
-
     }
 
   };
-
-
-
-
-
 
 
 
@@ -58,76 +41,30 @@ const ProductActions = ({
 
     <motion.div
 
+      initial={{ opacity:0, y:10 }}
 
-      initial={{
-        opacity:0,
-        y:15,
-      }}
+      animate={{ opacity:1, y:0 }}
 
+      transition={{ duration:.25 }}
 
-      animate={{
-        opacity:1,
-        y:0,
-      }}
-
-
-      transition={{
-        duration:0.4,
-      }}
-
-
-
-      className="space-y-6"
-
+      className="space-y-5"
 
     >
 
 
 
-
-
-
       {/* Quantity */}
 
+      <div className="flex items-center justify-between gap-4">
 
 
-      <div
-        className="
-          flex
-          items-center
-          justify-between
-        "
-      >
-
-
-
-        <span
-          className="
-            text-[10px]
-            uppercase
-            tracking-[0.3em]
-            text-neutral-400
-          "
-        >
+        <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">
           Quantity
         </span>
 
 
 
-
-
-        <div
-          className="
-            flex
-            items-center
-            rounded-full
-            border
-            border-neutral-200
-            bg-white
-            p-1
-          "
-        >
-
+        <div className="flex items-center rounded-full border border-neutral-200 bg-white p-1">
 
 
           <button
@@ -136,18 +73,7 @@ const ProductActions = ({
 
             onClick={decreaseQuantity}
 
-            className="
-              flex
-              h-8
-              w-8
-              items-center
-              justify-center
-              rounded-full
-              text-neutral-500
-              transition
-              hover:bg-neutral-100
-              hover:text-black
-            "
+            className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-500 transition hover:bg-neutral-100 hover:text-black"
 
           >
 
@@ -157,22 +83,11 @@ const ProductActions = ({
 
 
 
-
-
-          <span
-            className="
-              w-10
-              text-center
-              text-sm
-              font-medium
-            "
-          >
+          <span className="w-10 text-center text-sm font-medium">
 
             {String(quantity).padStart(2,"0")}
 
           </span>
-
-
 
 
 
@@ -182,18 +97,7 @@ const ProductActions = ({
 
             onClick={increaseQuantity}
 
-            className="
-              flex
-              h-8
-              w-8
-              items-center
-              justify-center
-              rounded-full
-              text-neutral-500
-              transition
-              hover:bg-neutral-100
-              hover:text-black
-            "
+            className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-500 transition hover:bg-neutral-100 hover:text-black"
 
           >
 
@@ -202,9 +106,7 @@ const ProductActions = ({
           </button>
 
 
-
         </div>
-
 
 
       </div>
@@ -212,61 +114,26 @@ const ProductActions = ({
 
 
 
+      {/* Buttons */}
 
 
-
-
-
-      {/* Action Buttons */}
-
-
-
-      <div
-        className="
-          flex
-          gap-3
-        "
-      >
-
-
-
+      <div className="flex gap-3">
 
 
         <motion.button
 
-
           type="button"
 
+          whileTap={{ scale:.97 }}
 
-          whileTap={{
-            scale:0.97,
-          }}
-
-
-          whileHover={{
-            y:-2,
-          }}
-
-
+          whileHover={{ y:-1 }}
 
           disabled={currentStock === 0}
 
-
-
           onClick={handleAddToCart}
 
-
-
           className={`
-            flex-1
-            rounded-full
-            py-3.5
-            text-xs
-            font-semibold
-            uppercase
-            tracking-[0.25em]
-            transition-all
-
+            flex-1 rounded-full py-4 text-xs font-semibold uppercase tracking-[0.15em] transition sm:tracking-[0.25em]
             ${
               currentStock === 0
                 ? "cursor-not-allowed bg-neutral-300 text-neutral-500"
@@ -274,17 +141,9 @@ const ProductActions = ({
             }
           `}
 
-
         >
 
-
-
-          {
-            currentStock === 0
-              ? "Out Of Stock"
-              : "Add To Bag"
-          }
-
+          {currentStock === 0 ? "Out Of Stock" : "Add To Bag"}
 
 
         </motion.button>
@@ -292,45 +151,18 @@ const ProductActions = ({
 
 
 
-
-
-
-
-
         <motion.button
-
 
           type="button"
 
+          whileHover={{ scale:1.04 }}
 
-          whileHover={{
-            scale:1.05,
-          }}
+          whileTap={{ scale:.95 }}
 
-
-          whileTap={{
-            scale:0.95,
-          }}
-
-
-
-          onClick={() =>
-            toggleWishlist(productId)
-          }
-
-
+          onClick={() => toggleWishlist(productId)}
 
           className={`
-            flex
-            h-12
-            w-12
-            shrink-0
-            items-center
-            justify-center
-            rounded-full
-            border
-            transition
-
+            flex h-12 w-12 shrink-0 items-center justify-center rounded-full border transition
             ${
               isWishlisted
                 ? "border-black bg-black text-white"
@@ -338,36 +170,21 @@ const ProductActions = ({
             }
           `}
 
-
         >
-
-
 
           <Heart
 
             size={18}
 
-            fill={
-              isWishlisted
-                ? "currentColor"
-                : "none"
-            }
+            fill={isWishlisted ? "currentColor" : "none"}
 
           />
-
 
 
         </motion.button>
 
 
-
-
-
       </div>
-
-
-
-
 
 
     </motion.div>

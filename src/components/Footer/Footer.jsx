@@ -1,482 +1,14 @@
-// import { Link } from "react-router-dom";
-// import { Mail, MapPin, Phone, ArrowRight } from "lucide-react";
-// import {
-//   FaInstagram,
-//   FaFacebookF,
-//   FaTwitter,
-// } from "react-icons/fa";
-
-
-// const Footer = () => {
-
-
-//   const shopLinks = [
-//     { label: "All Collection", path: "/collection" },
-//     { label: "Men's Wear", path: "/men" },
-//     { label: "Women's Wear", path: "/women" },
-//     { label: "New Arrivals", path: "/collection" },
-//   ];
-
-
-//   const supportLinks = [
-//     { label: "Contact Us", path: "/contact" },
-//     { label: "Shipping & Delivery", path: "#" },
-//     { label: "Returns Policy", path: "#" },
-//     { label: "Privacy Policy", path: "#" },
-//   ];
-
-
-//   const socials = [
-//     {
-//       icon: <FaInstagram />,
-//       link: "#",
-//     },
-//     {
-//       icon: <FaFacebookF />,
-//       link: "#",
-//     },
-//     {
-//       icon: <FaTwitter />,
-//       link: "#",
-//     },
-//   ];
-
-
-
-//   return (
-
-//     <footer className="bg-[#050505] text-white">
-
-
-//       <div className="mx-auto w-[92%] max-w-[1580px] py-14 sm:py-20">
-
-
-//         {/* Newsletter */}
-
-
-//         <div className="
-//           rounded-[30px]
-//           border
-//           border-white/10
-//           bg-white/3
-//           px-6
-//           py-10
-//           sm:px-12
-//           sm:py-14
-//         ">
-
-
-//           <div className="
-//             grid
-//             gap-8
-//             lg:grid-cols-[1fr_auto]
-//             lg:items-center
-//           ">
-
-
-//             <div>
-
-
-//               <p className="
-//                 text-[10px]
-//                 font-semibold
-//                 uppercase
-//                 tracking-[0.4em]
-//                 text-white/40
-//               ">
-//                 Join The Aura
-//               </p>
-
-
-//               <h2 className="
-//                 mt-4
-//                 font-['Playfair_Display']
-//                 text-3xl
-//                 font-semibold
-//                 sm:text-5xl
-//               ">
-//                 Stay Inspired With
-//                 Exclusive Updates
-//               </h2>
-
-
-//               <p className="
-//                 mt-4
-//                 max-w-xl
-//                 text-sm
-//                 leading-7
-//                 text-white/50
-//               ">
-//                 Get early access to new collections,
-//                 special offers and luxury fashion updates.
-//               </p>
-
-
-//             </div>
-
-
-
-
-//             <div className="
-//               flex
-//               w-full
-//               flex-col
-//               gap-3
-//               sm:flex-row
-//               lg:w-auto
-//             ">
-
-
-//               <input
-//                 type="email"
-//                 placeholder="Enter your email"
-//                 className="
-//                   h-14
-//                   w-full
-//                   rounded-full
-//                   border
-//                   border-white/10
-//                   bg-white/5
-//                   px-6
-//                   text-sm
-//                   text-white
-//                   outline-none
-//                   placeholder:text-white/40
-//                   focus:border-white/30
-//                   sm:w-72
-//                 "
-//               />
-
-
-//               <button
-//                 className="
-//                   flex
-//                   h-14
-//                   items-center
-//                   justify-center
-//                   gap-2
-//                   rounded-full
-//                   bg-white
-//                   px-7
-//                   text-[11px]
-//                   font-semibold
-//                   uppercase
-//                   tracking-[0.25em]
-//                   text-black
-//                   transition
-//                   duration-300
-//                   hover:bg-neutral-200
-//                 "
-//               >
-
-//                 Subscribe
-
-//                 <ArrowRight size={15}/>
-
-//               </button>
-
-
-//             </div>
-
-
-
-//           </div>
-
-
-//         </div>
-
-
-
-
-
-//         {/* Main Footer */}
-
-
-
-//         <div className="
-//           mt-14
-//           grid
-//           grid-cols-1
-//           gap-10
-//           border-b
-//           border-white/10
-//           pb-12
-//           sm:grid-cols-2
-//           lg:grid-cols-4
-//         ">
-
-
-
-//           {/* Brand */}
-
-
-//           <div>
-
-
-//             <h2 className="
-//               font-['Playfair_Display']
-//               text-4xl
-//               font-semibold
-//             ">
-//               The Aura
-//             </h2>
-
-
-
-//             <p className="
-//               mt-5
-//               text-sm
-//               leading-7
-//               text-white/50
-//             ">
-//               Redefining modern fashion through
-//               timeless designs, premium fabrics
-//               and refined craftsmanship.
-//             </p>
-
-
-
-//             <div className="mt-7 flex gap-3">
-
-
-//               {socials.map((item,index)=>(
-
-//                 <a
-//                   key={index}
-//                   href={item.link}
-//                   className="
-//                     flex
-//                     h-10
-//                     w-10
-//                     items-center
-//                     justify-center
-//                     rounded-full
-//                     border
-//                     border-white/10
-//                     bg-white/5
-//                     text-white/60
-//                     transition
-//                     hover:-translate-y-1
-//                     hover:bg-white
-//                     hover:text-black
-//                   "
-//                 >
-//                   {item.icon}
-//                 </a>
-
-//               ))}
-
-
-//             </div>
-
-
-//           </div>
-
-
-
-
-
-//           {/* Shop */}
-
-
-//           <FooterColumn
-//             title="Shop"
-//             links={shopLinks}
-//           />
-
-
-
-
-
-//           {/* Support */}
-
-
-//           <FooterColumn
-//             title="Support"
-//             links={supportLinks}
-//           />
-
-
-
-
-
-//           {/* Contact */}
-
-
-//           <div>
-
-
-//             <h3 className="
-//               text-[11px]
-//               font-semibold
-//               uppercase
-//               tracking-[0.35em]
-//             ">
-//               Contact
-//             </h3>
-
-
-//             <div className="
-//               mt-6
-//               space-y-4
-//               text-sm
-//               text-white/50
-//             ">
-
-
-//               <p className="flex gap-3">
-//                 <Mail size={16}/>
-//                 support@theaura.com
-//               </p>
-
-
-//               <p className="flex gap-3">
-//                 <Phone size={16}/>
-//                 +880 1792960610
-//               </p>
-
-
-//               <p className="flex gap-3">
-//                 <MapPin size={16}/>
-//                 Dhaka, Bangladesh
-//               </p>
-
-
-//             </div>
-
-
-//           </div>
-
-
-
-//         </div>
-
-
-
-
-
-//         {/* Bottom */}
-
-
-
-//         <div className="
-//           flex
-//           flex-col
-//           items-center
-//           gap-3
-//           pt-8
-//           text-center
-//           text-[11px]
-//           text-white/40
-//           md:flex-row
-//           md:justify-between
-//         ">
-
-
-//           <p>
-//             © {new Date().getFullYear()} The Aura. All rights reserved.
-//           </p>
-
-
-//           <p>
-//             Designed with precision. Crafted for elegance.
-//           </p>
-
-
-//         </div>
-
-
-
-//       </div>
-
-
-//     </footer>
-
-//   );
-
-// };
-
-
-
-
-
-// const FooterColumn = ({title,links}) => {
-
-
-//   return (
-
-//     <div>
-
-
-//       <h3 className="
-//         text-[11px]
-//         font-semibold
-//         uppercase
-//         tracking-[0.35em]
-//       ">
-//         {title}
-//       </h3>
-
-
-
-//       <ul className="mt-6 space-y-4">
-
-
-//         {links.map((item)=>(
-          
-//           <li key={item.label}>
-
-//             <Link
-//               to={item.path}
-//               className="
-//                 text-sm
-//                 text-white/50
-//                 transition
-//                 duration-300
-//                 hover:text-white
-//               "
-//             >
-//               {item.label}
-//             </Link>
-
-//           </li>
-
-//         ))}
-
-
-//       </ul>
-
-
-//     </div>
-
-//   );
-
-// };
-
-
-
-// export default Footer;
-
-
 import { Link } from "react-router-dom";
 import { Mail, ArrowRight } from "lucide-react";
-import {
-  FaInstagram,
-  FaFacebookF,
-  FaTwitter,
-} from "react-icons/fa";
-
+import { FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
-
-
   const shopLinks = [
     { label: "All Collection", path: "/collection" },
     { label: "Men's Wear", path: "/men" },
     { label: "Women's Wear", path: "/women" },
     { label: "New Arrivals", path: "/collection" },
   ];
-
 
   const supportLinks = [
     "Contact Us",
@@ -485,7 +17,6 @@ const Footer = () => {
     "Privacy Policy",
   ];
 
-
   const socials = [
     <FaInstagram />,
     <FaFacebookF />,
@@ -493,68 +24,55 @@ const Footer = () => {
     <Mail />,
   ];
 
-
-
   return (
+    <footer className="bg-neutral-950 text-white">
 
-    <footer className="bg-black text-white">
+      <div className="mx-auto w-[92%] max-w-375 py-16 sm:py-20 lg:py-24">
 
+        {/* Top Section */}
 
-      <div className="mx-auto w-[94%] max-w-[1580px] py-14 sm:py-20 lg:py-24">
-
-
-        {/* Top */}
-
-        <div className="grid gap-12 border-b border-white/10 pb-12 sm:gap-16 md:grid-cols-2 lg:grid-cols-[1.3fr_.8fr_.8fr_1fr]">
-
+        <div className="grid gap-12 border-b border-white/10 pb-14 sm:gap-16 md:grid-cols-2 lg:grid-cols-[1.4fr_.8fr_.8fr_1fr]">
 
 
           {/* Brand */}
 
-
           <div>
 
-            <h2 className="font-['Playfair_Display'] text-4xl font-semibold sm:text-5xl">
+            <p className="text-[10px] uppercase tracking-[0.5em] text-[#C8A96A]">
+              Luxury Fashion House
+            </p>
+
+
+            <h2 className="mt-4 font-['Playfair_Display'] text-5xl font-semibold tracking-wide sm:text-6xl">
               The Aura
             </h2>
 
 
-            <p className="mt-5 max-w-sm text-sm leading-7 text-white/50">
-              Redefining modern fashion through timeless designs,
-              premium fabrics and effortless everyday luxury.
+            <div className="mt-5 h-px w-16 bg-[#C8A96A]" />
+
+
+            <p className="mt-6 max-w-sm text-sm leading-7 text-white/50">
+              Redefining modern elegance with timeless silhouettes,
+              premium fabrics and effortless luxury for everyday life.
             </p>
 
 
-            <div className="mt-7 flex gap-3">
 
-              {
-                socials.map((icon,index)=>(
+            <div className="mt-8 flex gap-3">
 
-                  <a
-                    key={index}
-                    href="#"
-                    className="
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-white/10
-                    text-white/60
-                    transition
-                    duration-300
-                    hover:border-white
-                    hover:bg-white
-                    hover:text-black
-                    "
-                  >
+              {socials.map((icon, index) => (
+
+                <a
+                  key={index}
+                  href="#"
+                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition duration-300 hover:border-[#C8A96A] hover:bg-[#C8A96A] hover:text-black"
+                >
+                  <span className="transition-transform duration-300 group-hover:scale-110">
                     {icon}
-                  </a>
+                  </span>
+                </a>
 
-                ))
-              }
+              ))}
 
             </div>
 
@@ -567,32 +85,35 @@ const Footer = () => {
 
           {/* Shop */}
 
-
           <div>
 
-            <h3 className="text-[10px] font-semibold uppercase tracking-[0.4em] text-white/80">
+            <h3 className="text-[10px] uppercase tracking-[0.45em] text-[#C8A96A]">
               Shop
             </h3>
 
 
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-7 space-y-5">
 
-              {
-                shopLinks.map((item)=>(
+              {shopLinks.map((item)=>(
 
-                  <li key={item.label}>
+                <li key={item.label}>
 
-                    <Link
-                      to={item.path}
-                      className="text-sm text-white/50 transition hover:text-white"
-                    >
+                  <Link
+                    to={item.path}
+                    className="group flex items-center gap-2 text-sm text-white/50 transition hover:text-white"
+                  >
+
+                    <span>
                       {item.label}
-                    </Link>
+                    </span>
 
-                  </li>
+                    <span className="h-px w-0 bg-[#C8A96A] transition-all duration-300 group-hover:w-5" />
 
-                ))
-              }
+                  </Link>
+
+                </li>
+
+              ))}
 
             </ul>
 
@@ -602,34 +123,29 @@ const Footer = () => {
 
 
 
-
           {/* Support */}
-
 
           <div>
 
-            <h3 className="text-[10px] font-semibold uppercase tracking-[0.4em] text-white/80">
+            <h3 className="text-[10px] uppercase tracking-[0.45em] text-[#C8A96A]">
               Support
             </h3>
 
 
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-7 space-y-5">
 
-              {
-                supportLinks.map((item)=>(
+              {supportLinks.map((item)=>(
 
-                  <li
-                    key={item}
-                    className="text-sm text-white/50 transition hover:text-white"
-                  >
-                    {item}
-                  </li>
+                <li
+                  key={item}
+                  className="cursor-pointer text-sm text-white/50 transition hover:text-white"
+                >
+                  {item}
+                </li>
 
-                ))
-              }
+              ))}
 
             </ul>
-
 
           </div>
 
@@ -640,52 +156,32 @@ const Footer = () => {
 
           {/* Newsletter */}
 
-
           <div>
 
-
-            <h3 className="text-[10px] font-semibold uppercase tracking-[0.4em] text-white/80">
-              Stay Updated
+            <h3 className="text-[10px] uppercase tracking-[0.45em] text-[#C8A96A]">
+              Stay Connected
             </h3>
 
 
-            <p className="mt-6 text-sm leading-6 text-white/50">
-              Subscribe for new collections,
-              exclusive offers and updates.
+            <p className="mt-7 text-sm leading-7 text-white/50">
+              Subscribe to receive exclusive collections,
+              private offers and brand updates.
             </p>
 
 
 
-            <div className="mt-5 flex overflow-hidden rounded-full border border-white/20">
+            <div className="mt-6 flex overflow-hidden rounded-full border border-white/20 bg-white/5 transition focus-within:border-[#C8A96A]">
 
 
               <input
                 type="email"
                 placeholder="Email address"
-                className="
-                w-full
-                bg-transparent
-                px-5
-                text-sm
-                text-white
-                outline-none
-                placeholder:text-white/40
-                "
+                className="w-full bg-transparent px-5 text-sm text-white outline-none placeholder:text-white/30"
               />
 
 
               <button
-                className="
-                flex
-                h-12
-                w-12
-                items-center
-                justify-center
-                bg-white
-                text-black
-                transition
-                hover:bg-neutral-200
-                "
+                className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#C8A96A] text-black transition hover:bg-[#d8bb82]"
               >
 
                 <ArrowRight size={17}/>
@@ -699,8 +195,8 @@ const Footer = () => {
           </div>
 
 
-
         </div>
+
 
 
 
@@ -708,16 +204,16 @@ const Footer = () => {
 
         {/* Bottom */}
 
+        <div className="flex flex-col gap-4 pt-8 text-center text-[11px] uppercase tracking-[0.25em] text-white/30 sm:flex-row sm:justify-between sm:text-left">
 
-        <div className="flex flex-col gap-3 pt-8 text-center text-[11px] tracking-wide text-white/40 sm:flex-row sm:justify-between">
 
           <p>
             © {new Date().getFullYear()} The Aura. All rights reserved.
           </p>
 
 
-          <p>
-            Crafted with timeless elegance.
+          <p className="text-[#C8A96A]/70">
+            Crafted With Timeless Elegance
           </p>
 
 
@@ -726,12 +222,8 @@ const Footer = () => {
 
       </div>
 
-
     </footer>
-
   );
-
 };
-
 
 export default Footer;

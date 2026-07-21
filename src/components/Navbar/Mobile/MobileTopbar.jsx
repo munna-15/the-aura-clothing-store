@@ -10,10 +10,10 @@ const MobileTopbar = ({
 
   return (
     <motion.header
-      initial={{ y:-30, opacity:0 }}
-      animate={{ y:0, opacity:1 }}
-      transition={{ duration:.45, ease:"easeOut" }}
-      className="fixed inset-x-0 top-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur-xl lg:hidden"
+      initial={{ y: -30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: .25, ease: "easeOut" }}
+      className="fixed inset-x-0 top-0 z-70 border-b border-black/5 bg-white/90 backdrop-blur-xl lg:hidden"
     >
 
       <div className="flex h-17 items-center justify-between px-6">
@@ -22,24 +22,32 @@ const MobileTopbar = ({
         {/* Menu */}
 
         <button
-          onClick={onToggleMenu}
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onToggleMenu();
+          }}
+          onTouchStart={(e) => {
+            e.stopPropagation();
+          }}
           aria-label="Toggle menu"
           className="flex h-10 w-10 items-center justify-center text-black transition active:scale-90"
         >
 
           <motion.div
             animate={{
-              rotate:isOpen ? 90 : 0
+              rotate: isOpen ? 90 : 0
             }}
             transition={{
-              duration:.25
+              duration: .25
             }}
           >
 
             {isOpen ? (
-              <X size={23} strokeWidth={1.8}/>
+              <X size={23} strokeWidth={1.8} />
             ) : (
-              <Menu size={23} strokeWidth={1.8}/>
+              <Menu size={23} strokeWidth={1.8} />
             )}
 
           </motion.div>

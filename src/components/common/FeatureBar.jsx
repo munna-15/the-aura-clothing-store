@@ -10,27 +10,38 @@ const features = [
 const FeatureBar = () => {
   return (
     <section className="border-y border-black/5 bg-white">
-      <div className="mx-auto flex w-[85%] max-w-[1580px] flex-wrap items-center justify-center gap-x-8 gap-y-5 py-6 lg:justify-between">
+
+      <div className="mx-auto flex w-[92%] max-w-350 flex-wrap items-center justify-center gap-x-10 gap-y-5 py-6 lg:justify-between">
 
         {features.map((feature) => (
+
           <div
             key={feature}
-            className="group flex items-center gap-3 transition-all duration-300"
+            className="flex items-center gap-3"
           >
-            <div className="flex h-7 w-7 items-center justify-center rounded-full border border-black/10 transition-all duration-300 group-hover:border-black group-hover:bg-black">
+
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black">
+
               <Check
-                size={14}
-                className="text-black transition-colors duration-300 group-hover:text-white"
+                size={13}
+                strokeWidth={2}
+                className="text-white"
               />
+
             </div>
 
-            <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-neutral-700 transition-colors duration-300 group-hover:text-black">
+
+            <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-neutral-700">
               {feature}
             </span>
+
+
           </div>
+
         ))}
 
       </div>
+
     </section>
   );
 };

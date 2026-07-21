@@ -24,24 +24,10 @@ const MobileSearch = ({
   return (
 
     <motion.div
-
-      initial={{
-        opacity:0,
-        y:10
-      }}
-
-      animate={{
-        opacity:1,
-        y:0
-      }}
-
-      transition={{
-        duration:.35,
-        delay:.15
-      }}
-
+      initial={{opacity:0,y:10}}
+      animate={{opacity:1,y:0}}
+      transition={{duration:.25,delay:.05}}
       className="px-7 pt-6"
-
     >
 
 
@@ -56,19 +42,14 @@ const MobileSearch = ({
 
 
         <input
-
-          type="text"
-
+          type="search"
           value={searchInput}
-
           onChange={(e)=>setSearchInput(e.target.value)}
-
           onKeyDown={handleKeyDown}
-
           placeholder="Search collection..."
-
-          className="ml-3 w-full bg-transparent text-sm text-black outline-none placeholder:text-neutral-400"
-
+          autoComplete="off"
+          inputMode="search"
+          className="ml-3 w-full bg-transparent text-[16px] text-black outline-none placeholder:text-neutral-400"
         />
 
 

@@ -12,36 +12,22 @@ const ProductGallery = ({
 }) => {
 
 
-
   const galleryImages = useMemo(() => {
 
     if (product?.images?.length) {
       return product.images;
     }
 
-    return product?.image
-      ? [product.image]
-      : [];
+    return product?.image ? [product.image] : [];
 
   }, [product]);
 
 
 
-
-
-
-
   useEffect(() => {
 
-    if (
-      galleryImages.length &&
-      !selectedImage
-    ) {
-
-      setSelectedImage(
-        galleryImages[0]
-      );
-
+    if (galleryImages.length && !selectedImage) {
+      setSelectedImage(galleryImages[0]);
     }
 
   }, [
@@ -52,18 +38,7 @@ const ProductGallery = ({
 
 
 
-
-
-
-
-
-  if (!galleryImages.length) {
-    return null;
-  }
-
-
-
-
+  if (!galleryImages.length) return null;
 
 
 
@@ -74,160 +49,52 @@ const ProductGallery = ({
 
 
 
-
-
-
-
-
-
   return (
 
     <motion.section
-
-
-      initial={{
-        opacity:0,
-        y:20,
-      }}
-
-
-      animate={{
-        opacity:1,
-        y:0,
-      }}
-
-
-      transition={{
-        duration:0.45,
-        ease:"easeOut",
-      }}
-
-
-      className="w-full"
-
-
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: .25, ease: "easeOut" }}
+      className="min-w-0 w-full"
     >
 
 
+      <div className="flex min-w-0 flex-col gap-3
+                     sm:gap-4 lg:flex-row lg:gap-5">
 
 
+        {/* Mobile Bottom / Desktop Side Thumbnail */}
 
-
-      <div
-        className="
-          flex
-          flex-col
-          gap-4
-          lg:flex-row
-          lg:gap-5
-        "
-      >
-
-
-
-
-
-
-
-        {/* Thumbnail Rail */}
-
-
-
-        <div
-          className="
-            order-2
-            w-full
-            lg:order-1
-            lg:w-20
-            lg:shrink-0
-          "
-        >
-
-
+        <div className="order-2 min-w-0 max-w-full lg:order-1 lg:w-20 lg:shrink-0">
 
           <ThumbnailList
-
-
             images={galleryImages}
-
-
             selectedImage={selectedImage}
-
-
             setSelectedImage={setSelectedImage}
-
-
             productName={product?.name}
-
-
           />
-
 
         </div>
 
 
 
+        {/* Main Image */}
 
-
-
-
-
-
-        {/* Main Product Image */}
-
-
-
-        <div
-          className="
-            order-1
-            min-w-0
-            flex-1
-            lg:order-2
-          "
-        >
-
+        <div className="order-1 min-w-0 flex-1 lg:order-2">
 
 
           <MainImage
-
-
-            image={
-              selectedImage ||
-              galleryImages[0]
-            }
-
-
-            productName={
-              product?.name
-            }
-
-
-            currentIndex={
-              activeIndex
-            }
-
-
-            totalImages={
-              galleryImages.length
-            }
-
-
+            image={selectedImage || galleryImages[0]}
+            productName={product?.name}
+            currentIndex={activeIndex}
+            totalImages={galleryImages.length}
           />
-
 
 
         </div>
 
 
-
-
-
-
-
       </div>
-
-
-
 
 
     </motion.section>

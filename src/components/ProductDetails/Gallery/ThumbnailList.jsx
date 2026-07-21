@@ -31,69 +31,46 @@ const ThumbnailList = ({
     >
 
 
-
-      {images.map((img, index) => {
-
-
-        const active =
-          selectedImage === img;
+      {images.map((img,index)=>{
 
 
+        const active = selectedImage === img;
 
 
         return (
 
-
           <motion.button
-
 
             key={`${img}-${index}`}
 
-
             type="button"
 
-
-            onClick={() => setSelectedImage(img)}
-
-
+            onClick={()=>setSelectedImage(img)}
 
             initial={{
               opacity:0,
-              scale:0.9,
+              scale:.95,
             }}
-
-
 
             animate={{
               opacity:1,
-              scale:active ? 1.05 : 1,
+              scale:active ? 1.04 : 1,
             }}
-
-
-
-            whileHover={{
-              scale:1.08,
-            }}
-
-
 
             whileTap={{
-              scale:0.96,
+              scale:.96,
             }}
-
-
 
             transition={{
-              duration:0.25,
+              duration:.25,
             }}
-
 
 
             className={`
               relative
+              shrink-0
               h-16
               w-16
-              shrink-0
               overflow-hidden
               rounded-xl
               bg-neutral-50
@@ -105,40 +82,29 @@ const ThumbnailList = ({
 
               ${
                 active
-                  ? "border border-black shadow-[0_8px_25px_rgba(0,0,0,0.12)]"
-                  : "border border-neutral-200 hover:border-neutral-400"
+                ? "border-2 border-black shadow-[0_8px_25px_rgba(0,0,0,0.15)]"
+                : "border border-neutral-200 hover:border-neutral-400"
               }
             `}
 
           >
 
 
-
-
             <motion.img
-
 
               src={img}
 
-
               alt={`${productName}-${index}`}
 
-
               loading="lazy"
-
-
 
               animate={{
                 scale:active ? 1.08 : 1,
               }}
 
-
-
               transition={{
-                duration:0.35,
+                duration:.3,
               }}
-
-
 
               className="
                 h-full
@@ -147,51 +113,35 @@ const ThumbnailList = ({
                 p-1.5
               "
 
-
             />
-
-
-
-
-
 
 
             {active && (
 
+              <motion.div
 
-              <motion.span
-
-
-                layoutId="active-thumbnail"
-
+                layoutId="thumbnail-active"
 
                 className="
                   pointer-events-none
                   absolute
-                  inset-0
-                  rounded-xl
-                  ring-2
-                  ring-black/80
-                  ring-offset-2
+                  inset-1
+                  rounded-lg
+                  border
+                  border-white
                 "
 
-
               />
-
 
             )}
 
 
-
-
           </motion.button>
-
 
         );
 
 
       })}
-
 
 
     </div>

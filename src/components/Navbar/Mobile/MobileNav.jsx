@@ -10,9 +10,9 @@ import MobileQuickActions from "./MobileQuickActions";
 
 
 const drawerVariants = {
-  hidden:{x:"100%"},
-  visible:{x:0,transition:{duration:.45,ease:[0.22,1,0.36,1]}},
-  exit:{x:"100%",transition:{duration:.3}},
+  hidden: { x: "100%" },
+  visible: { x: 0, transition: { duration: .25, ease: "easeOut" } },
+  exit: { x: "100%", transition: { duration: .2, ease: "easeIn" } },
 };
 
 
@@ -34,44 +34,44 @@ const MobileNav = ({
   const drawerRef = useRef(null);
 
 
-  useClickOutside(drawerRef,()=>{
-    if(isOpen) onClose();
-  });
+  useClickOutside(drawerRef, (event) => {
+    if (isOpen) onClose();
+  }, isOpen);
 
 
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    if(!isOpen) return;
+    if (!isOpen) return;
 
 
-    const handleEscape = (e)=>{
-      if(e.key==="Escape") onClose();
+    const handleEscape = (e) => {
+      if (e.key === "Escape") onClose();
     };
 
 
-    document.body.style.overflow="hidden";
+    document.body.style.overflow = "hidden";
 
-    window.addEventListener("keydown",handleEscape);
+    window.addEventListener("keydown", handleEscape);
 
 
-    return()=>{
+    return () => {
 
-      document.body.style.overflow="";
+      document.body.style.overflow = "";
 
-      window.removeEventListener("keydown",handleEscape);
+      window.removeEventListener("keydown", handleEscape);
 
     };
 
 
-  },[isOpen,onClose]);
+  }, [isOpen, onClose]);
 
 
 
   return (
 
     <>
-      <MobileOverlay isOpen={isOpen} onClose={onClose}/>
+      <MobileOverlay isOpen={isOpen} onClose={onClose} />
 
 
       <AnimatePresence>
@@ -84,31 +84,31 @@ const MobileNav = ({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed right-0 top-0 z-50 flex min-h-dvh w-[86%] max-w-sm flex-col overflow-hidden rounded-l-[42px] bg-white shadow-[0_30px_100px_rgba(0,0,0,.22)] lg:hidden"
+            className="fixed right-0 top-0 z-80 flex min-h-dvh w-[86%] max-w-sm flex-col overflow-hidden rounded-l-[42px] bg-white shadow-[0_30px_100px_rgba(0,0,0,.22)] lg:hidden"
           >
 
 
-            <div className="absolute -right-32 -top-20 h-80 w-80 rounded-full bg-neutral-100 blur-3xl"/>
+            <div className="absolute -right-32 -top-20 h-80 w-80 rounded-full bg-neutral-100 blur-3xl" />
 
-            <div className="absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-neutral-200/40 blur-3xl"/>
-
-
-            <div className="relative z-10 flex h-full min-h-dvh flex-col">
+            <div className="absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-neutral-200/40 blur-3xl" />
 
 
-              <MobileHeader user={user} onClose={onClose}/>
+            <div className="relative z-10 flex h-dvh max-h-dvh min-h-0 flex-col">
 
 
-              <div className="flex-1 overflow-y-auto overscroll-contain scrollbar-hide pb-4">
+              <MobileHeader user={user} onClose={onClose} />
 
-                <MobileSearch searchInput={searchInput} setSearchInput={setSearchInput} onSearch={onSearch} onClose={onClose}/>
 
-                <MobileMenu navLinks={navLinks} onClose={onClose}/>
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-6 [-webkit-overflow-scrolling:touch]">
+
+                <MobileSearch searchInput={searchInput} setSearchInput={setSearchInput} onSearch={onSearch} onClose={onClose} />
+
+                <MobileMenu navLinks={navLinks} onClose={onClose} />
 
               </div>
 
 
-              <MobileQuickActions user={user} wishlistCount={wishlistCount} cartCount={cartCount} onClose={onClose} onOpenCart={onOpenCart} onLogout={onLogout}/>
+              <MobileQuickActions user={user} wishlistCount={wishlistCount} cartCount={cartCount} onClose={onClose} onOpenCart={onOpenCart} onLogout={onLogout} />
 
 
             </div>
