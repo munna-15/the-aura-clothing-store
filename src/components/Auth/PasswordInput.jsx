@@ -1,185 +1,148 @@
-import { useState } from "react";
-import { Eye, EyeOff, Lock } from "lucide-react";
+import React from "react";
 
-
-const PasswordInput = ({
+const AuthInput = ({
   label,
+  type = "text",
   name,
   value,
   onChange,
   placeholder,
-  required = false,
+  icon: Icon,
   error,
+  required = false,
   disabled = false,
 }) => {
-
-
-  const [showPassword,setShowPassword] = useState(false);
-
-
+  const inputId = `input-${name}`;
+  const errorId = `${inputId}-error`;
 
   return (
-
-    <div className="space-y-2">
-
+    <div className="space-y-2.5">
 
       {/* Label */}
 
       <label
-        htmlFor={name}
-        className="flex items-center gap-1 text-xs font-medium uppercase tracking-wide text-neutral-600"
+        htmlFor={inputId}
+        className="
+          flex
+          items-center
+          gap-1
+          text-sm
+          font-medium
+          tracking-wide
+          text-neutral-700
+        "
       >
-
         {label}
 
         {required && (
-          <span className="text-neutral-900">
+          <span className="text-red-500">
             *
           </span>
         )}
-
       </label>
-
-
-
-
 
       {/* Input */}
 
-
       <div className="relative">
 
-
-        <Lock
-
-          size={17}
-
-          strokeWidth={1.7}
-
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400"
-
-        />
-
-
-
-
+        {Icon && (
+          <Icon
+            size={18}
+            strokeWidth={1.8}
+            className="
+              pointer-events-none
+              absolute
+              left-4
+              top-1/2
+              -translate-y-1/2
+              text-neutral-400
+            "
+          />
+        )}
 
         <input
-
-          id={name}
-
+          id={inputId}
           name={name}
-
-          type={showPassword ? "text" : "password"}
-
+          type={type}
           value={value}
-
           onChange={onChange}
-
           placeholder={placeholder}
-
-          required={required}
-
           disabled={disabled}
-
-          autoComplete={
-            name === "confirmPassword"
-              ? "new-password"
-              : "current-password"
-          }
-
-
+          required={required}
+          autoComplete={name}
+          spellCheck={false}
+          autoCapitalize="none"
+          autoCorrect="off"
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : undefined}
           className={`
-            h-12 w-full rounded-xl border bg-white text-sm text-neutral-900 outline-none transition-all duration-300
-            pl-11 pr-12 placeholder:text-neutral-400
+            h-14
+            w-full
+            rounded-2xl
+            border
+            bg-white
+            text-[16px]
+            text-neutral-900
+            outline-none
+            transition-all
+            duration-200
+            appearance-none
+
+            placeholder:text-neutral-400
+
+            ${
+              Icon
+                ? "pl-12 pr-4"
+                : "px-4"
+            }
+
             ${
               error
-              ? "border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-100"
-              : "border-neutral-200 hover:border-neutral-300 focus:border-neutral-400 focus:ring-4 focus:ring-neutral-900/5"
+                ? `
+                  border-red-400
+                  focus:border-red-500
+                  focus:ring-4
+                  focus:ring-red-100
+                `
+                : `
+                  border-neutral-200
+                  hover:border-neutral-300
+                  focus:border-black
+                  focus:ring-4
+                  focus:ring-black/5
+                `
             }
+
             ${
               disabled
-              ? "cursor-not-allowed bg-neutral-100 text-neutral-400"
-              : ""
+                ? `
+                  cursor-not-allowed
+                  bg-neutral-100
+                  text-neutral-400
+                `
+                : ""
             }
           `}
-
         />
-
-
-
-
-
-
-        <button
-
-          type="button"
-
-          disabled={disabled}
-
-          onClick={() =>
-            setShowPassword((prev)=>!prev)
-          }
-
-
-          className="
-            absolute
-            right-4
-            top-1/2
-            -translate-y-1/2
-            text-neutral-400
-            transition
-            hover:text-neutral-900
-            disabled:cursor-not-allowed
-          "
-
-          aria-label={
-            showPassword
-              ? "Hide password"
-              : "Show password"
-          }
-
-        >
-
-          {showPassword ? (
-
-            <EyeOff size={18} strokeWidth={1.7}/>
-
-          ) : (
-
-            <Eye size={18} strokeWidth={1.7}/>
-
-          )}
-
-
-        </button>
-
 
       </div>
 
-
-
-
-
-
+      {/* Error */}
 
       {error && (
-
-        <p className="text-xs text-red-500">
-
+        <p
+          id={errorId}
+          className="
+            text-sm
+            text-red-500
+          "
+        >
           {error}
-
         </p>
-
       )}
 
-
-
     </div>
-
   );
-
 };
 
-
-export default PasswordInput;
+export default AuthInput;

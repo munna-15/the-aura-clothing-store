@@ -1,247 +1,153 @@
 import { motion } from "framer-motion";
 import { assets } from "../../assets/assets";
 
-
 const AuthLayout = ({
   title,
   subtitle,
   children,
 }) => {
-
-
   return (
+    <main className="min-h-dvh bg-neutral-50">
 
-    <main className="min-h-screen bg-[#fafafa]">
+      <section className="grid min-h-dvh lg:grid-cols-2">
 
+        {/* ================= LEFT PANEL ================= */}
 
-      <section className="grid min-h-screen lg:grid-cols-2">
-
-
-
-        {/* LEFT IMAGE */}
-
-
-        <div className="relative hidden overflow-hidden lg:block">
-
+        <aside className="relative hidden overflow-hidden lg:block">
 
           <motion.img
-
             src={assets.login_1}
-
             alt="Luxury Fashion"
-
-            initial={{
-              scale:1.08,
-            }}
-
-            animate={{
-              scale:1,
-            }}
-
+            draggable={false}
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
             transition={{
-              duration:1.8,
-              ease:"easeOut",
+              duration: 1.6,
+              ease: "easeOut",
             }}
-
-            className="
-              h-screen
-              w-full
-              object-cover
-            "
-
+            className="h-dvh w-full select-none object-cover"
           />
-
-
 
           {/* Overlay */}
 
-          <div
-            className="
-              absolute
-              inset-0
-              bg-linear-to-r
-              from-black/60
-              via-black/30
-              to-transparent
-            "
-          />
+          <div className="absolute inset-0 bg-linear-to-r from-black/65 via-black/35 to-transparent" />
 
-
-
-
-
-          {/* Editorial Text */}
-
+          {/* Content */}
 
           <motion.div
-
             initial={{
-              opacity:0,
-              x:-30,
+              opacity: 0,
+              x: -30,
             }}
-
             animate={{
-              opacity:1,
-              x:0,
+              opacity: 1,
+              x: 0,
             }}
-
             transition={{
-              duration:.8,
-              delay:.2,
+              duration: .7,
+              delay: .2,
             }}
-
-
             className="
               absolute
-              left-0
-              -bottom-10
-              -translate-y-1/2
-              max-w-xl
+              inset-x-0
+              bottom-0
               p-14
               text-white
             "
-
           >
-
-
 
             <p
               className="
-                text-[11px]
+                text-xs
                 uppercase
-                tracking-[0.55em]
+                tracking-[0.45em]
                 text-white/70
               "
             >
               Premium Fashion House
             </p>
 
-
-
-
-
             <h2
               className="
                 mt-6
+                max-w-lg
+                text-balance
                 font-['Playfair_Display']
                 text-5xl
                 font-semibold
-                leading-[1.05]
+                leading-tight
                 xl:text-6xl
               "
             >
-
               Dress
-              <br/>
+              <br />
               Your Story.
-
             </h2>
-
-
-
-
 
             <p
               className="
                 mt-6
                 max-w-md
-                text-sm
+                text-base
                 leading-7
                 text-white/75
               "
             >
-
-              Timeless collections crafted with
-              elegance, confidence and modern luxury.
-
+              Timeless collections crafted with elegance,
+              confidence and modern luxury.
             </p>
-
-
 
           </motion.div>
 
+        </aside>
 
-
-        </div>
-
-
-
-
-
-
-
-        {/* RIGHT AUTH */}
-
-
+        {/* ================= RIGHT PANEL ================= */}
 
         <div
           className="
             flex
-            min-h-screen
-            items-start
+            min-h-dvh
+            items-center
             justify-center
-            overflow-y-auto
             px-5
-            py-10
+            py-8
             sm:px-8
-            lg:items-center
+            lg:px-10
           "
         >
 
-
-
           <motion.div
-
             initial={{
-              opacity:0,
-              y:25,
+              opacity: 0,
+              y: 18,
             }}
-
             animate={{
-              opacity:1,
-              y:0,
+              opacity: 1,
+              y: 0,
             }}
-
             transition={{
-              duration:.6,
+              duration: .45,
             }}
-
             className="
               w-full
               max-w-md
             "
-
           >
-
-
-
-
 
             {/* Brand */}
 
-
-
-            <div
-              className="
-                mb-10
-                text-center
-              "
-            >
-
+            <div className="mb-10 text-center">
 
               <p
                 className="
-                  text-[10px]
+                  text-[11px]
                   uppercase
-                  tracking-[0.55em]
+                  tracking-[0.45em]
                   text-neutral-400
                 "
               >
                 Luxury Clothing
               </p>
-
-
-
 
               <h1
                 className="
@@ -249,47 +155,33 @@ const AuthLayout = ({
                   font-['Playfair_Display']
                   text-4xl
                   font-semibold
-                  tracking-[0.25em]
+                  tracking-[0.15em]
                   text-neutral-900
                   sm:text-5xl
                 "
               >
-
                 THE AURA
-
               </h1>
-
-
 
               <div
                 className="
                   mx-auto
                   mt-5
                   h-px
-                  w-14
+                  w-16
                   bg-neutral-300
                 "
               />
 
-
             </div>
-
-
-
-
-
-
-
 
             {/* Heading */}
 
-
-
-            <div className="mb-7">
-
+            <header className="mb-7">
 
               <h2
                 className="
+                  text-balance
                   font-['Playfair_Display']
                   text-3xl
                   font-semibold
@@ -297,96 +189,61 @@ const AuthLayout = ({
                   sm:text-4xl
                 "
               >
-
                 {title}
-
               </h2>
-
-
-
 
               <p
                 className="
                   mt-3
-                  text-sm
-                  leading-6
+                  text-base
+                  leading-7
                   text-neutral-500
                 "
               >
-
                 {subtitle}
-
               </p>
 
+            </header>
 
-
-            </div>
-
-
-
-
-
-
-
-            {/* Form Card */}
-
-
+            {/* Card */}
 
             <motion.div
-
               initial={{
-                opacity:0,
-                scale:.97,
+                opacity: 0,
+                y: 16,
               }}
-
               animate={{
-                opacity:1,
-                scale:1,
+                opacity: 1,
+                y: 0,
               }}
-
               transition={{
-                duration:.5,
-                delay:.2,
+                duration: .4,
+                delay: .1,
               }}
-
-
               className="
-                rounded-[28px]
+                rounded-3xl
                 border
                 border-neutral-200
-                bg-white/90
-                p-5
+                bg-white/95
+                p-6
                 shadow-[0_20px_60px_rgba(0,0,0,0.06)]
                 backdrop-blur-xl
-                sm:p-7
+                sm:p-8
               "
-
             >
 
               {children}
 
-
             </motion.div>
-
-
-
 
           </motion.div>
 
-
-
         </div>
-
-
 
       </section>
 
-
     </main>
-
   );
-
 };
-
 
 export default AuthLayout;

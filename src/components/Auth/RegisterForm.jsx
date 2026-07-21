@@ -11,113 +11,86 @@ import AuthButton from "./AuthButton";
 import Divider from "./Divider";
 import SocialLogin from "./SocialLogin";
 
-
 const RegisterForm = () => {
-
   const navigate = useNavigate();
 
   const { register, loading } = useAuth();
 
-
   const [formData, setFormData] = useState({
-    fullName:"",
-    email:"",
-    password:"",
-    confirmPassword:"",
-    agree:false,
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    agree: false,
   });
 
-
-
   const handleChange = ({ target }) => {
-
     const { name, value, checked, type } = target;
 
-    setFormData((prev)=>({
+    setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
-
   };
 
-
-
-
-  const handleSubmit = async(e)=>{
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
 
     const fullName = formData.fullName.trim();
     const email = formData.email.trim();
 
-
-
-    if(!fullName){
+    if (!fullName) {
       toast.error("Full name is required");
       return;
     }
 
-
-    if(!email){
+    if (!email) {
       toast.error("Email is required");
       return;
     }
 
-
-    if(formData.password.length < 6){
+    if (formData.password.length < 6) {
       toast.error("Password must be at least 6 characters");
       return;
     }
 
-
-    if(formData.password !== formData.confirmPassword){
+    if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match");
       return;
     }
 
-
-    if(!formData.agree){
+    if (!formData.agree) {
       toast.error("Please accept Terms & Conditions");
       return;
     }
 
-
-
     const success = await register({
       fullName,
       email,
-      password:formData.password,
+      password: formData.password,
     });
 
-
-
-    if(!success) return;
-
-
+    if (!success) return;
 
     setFormData({
-      fullName:"",
-      email:"",
-      password:"",
-      confirmPassword:"",
-      agree:false,
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      agree: false,
     });
 
-
-    navigate("/login",{replace:true});
-
+    navigate("/login", {
+      replace: true,
+    });
   };
 
-
-
-
-
   return (
-
-    <form onSubmit={handleSubmit} className="space-y-4">
-
-
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="space-y-6"
+    >
       <AuthInput
         label="Full Name"
         name="fullName"
@@ -127,7 +100,6 @@ const RegisterForm = () => {
         onChange={handleChange}
         required
       />
-
 
       <AuthInput
         label="Email Address"
@@ -140,8 +112,6 @@ const RegisterForm = () => {
         required
       />
 
-
-
       <PasswordInput
         label="Password"
         name="password"
@@ -150,8 +120,6 @@ const RegisterForm = () => {
         onChange={handleChange}
         required
       />
-
-
 
       <PasswordInput
         label="Confirm Password"
@@ -162,93 +130,83 @@ const RegisterForm = () => {
         required
       />
 
-
-
-
-
       {/* Terms */}
 
-
-      <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 text-xs leading-5 text-neutral-500 transition hover:border-neutral-900 sm:text-sm">
-
-
+      <label
+        htmlFor="agree"
+        className="
+          flex
+          cursor-pointer
+          items-start
+          gap-3
+          rounded-2xl
+          border
+          border-neutral-200
+          bg-neutral-50
+          p-4
+          text-sm
+          leading-6
+          text-neutral-600
+          transition-all
+          duration-200
+          hover:border-neutral-400
+          hover:bg-white
+        "
+      >
         <input
+          id="agree"
           type="checkbox"
           name="agree"
           checked={formData.agree}
           onChange={handleChange}
-          className="mt-1 accent-black"
+          className="
+            mt-1
+            h-5
+            w-5
+            shrink-0
+            accent-black
+          "
         />
 
-
         <span>
-
           I agree to the{" "}
-
-          <span className="font-medium text-neutral-900">
+          <span className="font-semibold text-neutral-900">
             Terms & Conditions
-          </span>
-
-          {" "}and{" "}
-
-          <span className="font-medium text-neutral-900">
+          </span>{" "}
+          and{" "}
+          <span className="font-semibold text-neutral-900">
             Privacy Policy
           </span>
-
         </span>
-
-
       </label>
-
-
-
-
 
       <AuthButton loading={loading}>
         Create Account
       </AuthButton>
 
-
-
-
-
-      <div className="space-y-4 pt-1">
-
-
+      <div className="space-y-5 pt-2">
         <Divider />
-
 
         <SocialLogin />
 
-
-
         <p className="text-center text-sm text-neutral-500">
-
-
           Already have an account?{" "}
-
 
           <Link
             to="/login"
-            className="font-semibold text-neutral-900 transition hover:underline"
+            className="
+              font-semibold
+              text-neutral-900
+              transition-colors
+              hover:underline
+            "
           >
             Sign In
           </Link>
-
-
         </p>
-
-
-
       </div>
-
-
-
     </form>
-
   );
-
 };
-
 
 export default RegisterForm;
