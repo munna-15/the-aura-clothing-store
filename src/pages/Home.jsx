@@ -5,7 +5,7 @@ import BrandStory from '../components/Home/BrandStory/BrandStory'
 import Lookbook from '../components/LookBook/LookBook'
 import CustomerReviews from '../components/Reviews/CustomerReviews'
 import OfferContainer from '../components/OfferContainer'
-import Newsletter from '../components/Home/NewsLetter/Newsetter'
+import Newsletter from '../components/Home/Newsletter/Newsletter'
 import TrustBar from '../components/Home/TrustBar/TrustBar'
 
 
